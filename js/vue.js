@@ -36,6 +36,7 @@ class Vue {
             // call the observer object ,and listen the change of the data
         new Observer(this.$data)
             // call the compiler ,intercept the instrument and expression 
+        new Compiler(this)
     }
 
     _proxyData(data) {

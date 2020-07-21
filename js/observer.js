@@ -14,10 +14,15 @@ class Observer {
     }
 
     defineReactive(data, key, val) {
+        let that = this
+            //collect the dependcy
+        let dep = new Dep()
+        this.walk(val)
         Object.defineProperty(data, key, {
             enumerable: true,
             configurable: true,
             get() {
+                Dep.target && dep.addSub(Dep.target)
                 return val
             },
             set(newValue) {
@@ -25,6 +30,8 @@ class Observer {
                     return
                 }
                 val = newValue
+                that.walk(val)
+                dep.notify()
             }
         })
     }

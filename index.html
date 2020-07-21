@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3 v-for="(item) in arrays"></h3>
+    </div>
+</body>
+<script src="./js/dep.js"></script>
+<script src="./js/watcher.js"></script>
+<script src="./js/compiler.js"></script>
+<script src="./js/observer.js"></script>
+<script src="./js/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            arrays: [1, 2, 2, 2, 2]
+        }
+    })
+    console.dir(document.querySelector('#app1'))
+</script>
+
+</html>
