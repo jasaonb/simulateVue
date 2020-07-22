@@ -5,11 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/base.css">
 </head>
 
 <body>
     <div id="app">
-        <h3 v-for="(item) in arrays"></h3>
+        <div class="header">
+            <div class="image"><img src="/fg/resume/images/person.jpeg" alt="人物图片" /></div>
+            <div class="detail">
+                <span class="name">沈杰舜</span>
+                <span class="pursue">求职意向:Web前端开发</span>
+            </div>
+            <span class="resume">个人简历</span>
+        </div>
+        <div class="up">
+            <div class="left">
+                <div class="self-accessment">
+                    <span class="title">SELF-ASSESSMENT</span>
+                    <span class="title-cn">自我评价</span>
+                    <ul>
+                        <li v-for="(item) in assess">{{item}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right">
+                <div class="education">
+                    <span class="title">EDUCATION</span>
+                    <span class="title-cn">教育背景</span>
+                    <ul>
+                        <li v-for="(item) in educations">
+                            <span>{{item.date}} </span><span>{{item.school}} </span><span> 学历：{{item.level}}</span><span> 专业：{{item.major}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="down">
+            <div class="left">
+                <span class="title">TECHNOLOGY</span>
+                <span class="title-cn">技能</span>
+            </div>
+            <div class="rigght">
+                <span class="title">EXPERIENCE</span>
+                <span class="title-cn">工作经历</span>
+                <ul>
+                    <li v-for="(item) in exps">
+                        <h5>{{item.date}}</h5>
+                        <h5>{{item.company}}</h5>
+                        <h5>{{item.position}}</h5>
+                        <ul>
+                            <li v-for="(it) in item.content">
+                                <h5>{{it}}</h5>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 <script src="./js/dep.js"></script>
@@ -21,10 +73,43 @@
     let vm = new Vue({
         el: '#app',
         data: {
-            arrays: [1, 2, 2, 2, 2]
+            assess: ["熟悉前端开发，熟悉html css JavaScript Jquery vue.js,less,webpack工程化等前端技术",
+                "有后端的知识支持，熟悉c++ linux网络开发，qt图形库开发。数据结构，mysql",
+                "熟悉python开发，能完成前后端的通信", "自学能力强，能读懂英文技术文档，努力让自己与时俱进"
+            ],
+            educations: [{
+                date: "2013.9-2016.9",
+                school: "中山职业技术学院",
+                level: "大专",
+                major: "游戏开发"
+            }],
+            exps: [{
+                date: "2019.04-2020.06",
+                company: "百变天才乐高机器人培训中心",
+                position: "教师",
+                content: ["负责6-12岁的教学工作和必要时的家长沟通"],
+
+            }, {
+                date: "2018.05-2018.11",
+                company: "羊皮堂电商",
+                position: "运营助理/专员",
+                content: ["负责上架产品到各个网店平台", "负责产品售后问题的处理,必要时联系商品组,仓库进行核实,并给出解决方案"],
+
+            }, {
+                date: "2019.04-2020.06",
+                company: "百变天才乐高机器人培训中心",
+                position: "教师",
+                content: ["负责6-12岁的教学工作和必要时的家长沟通"],
+
+            }, {
+                date: "2016.09-2017.04",
+                company: "广州电动信息技术股份有限公司",
+                position: "基础支撑",
+                content: ["帮用户在线解决无法上网问题"],
+
+            }]
         }
     })
-    console.dir(document.querySelector('#app1'))
 </script>
 
 </html>

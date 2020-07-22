@@ -23,6 +23,9 @@ class Observer {
             configurable: true,
             get() {
                 Dep.target && dep.addSub(Dep.target)
+                if (Array.isArray(data)) {
+                    eval("data.index" + key + '=true')
+                }
                 return val
             },
             set(newValue) {
@@ -31,6 +34,7 @@ class Observer {
                 }
                 val = newValue
                 that.walk(val)
+                console.log(val)
                 dep.notify()
             }
         })
